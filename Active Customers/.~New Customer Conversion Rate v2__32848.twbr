@@ -1,0 +1,2915 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20232.23.0611.2007                               -->
+<workbook locale='en_US' original-version='18.1' source-build='2023.2.0 (20232.23.0611.2007)' source-platform='mac' version='18.1' xml:base='https://us-west-2b.online.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.RelationshipCalculations.true...RelationshipCalculations />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location derived-from='https://us-west-2b.online.tableau.com/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2?rev=1.1' id='NewCustomerConversionRatev2' path='/t/cymbiotikallc/workbooks' revision='1.3' site='cymbiotikallc' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='End of April' datatype='date' name='[Parameter 1]' param-domain-type='any' role='measure' type='quantitative' value='#2023-04-30#'>
+        <calculation class='tableau' formula='#2023-04-30#' />
+      </column>
+      <column caption='Month' datatype='date' name='[Parameter 2]' param-domain-type='range' role='measure' type='quantitative' value='#2023-05-11#'>
+        <calculation class='tableau' formula='#2023-05-11#' />
+        <range max='#2023-05-31#' min='#2023-05-01#' />
+      </column>
+      <column caption='Amazon Queued' datatype='real' name='[Parameter 3]' param-domain-type='any' role='measure' type='quantitative' value='91247.84'>
+        <calculation class='tableau' formula='91247.84' />
+      </column>
+    </datasource>
+    <datasource caption='customerdata+ (postgres)' inline='true' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='jalen-data.czawitrflbjp.us-east-1.rds.amazonaws.com' name='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq'>
+            <connection authentication='username-password' class='postgres' dbname='postgres' one-time-sql='' port='5432' server='jalen-data.czawitrflbjp.us-east-1.rds.amazonaws.com' sslmode='require' username='postgres' workgroup-auth-mode='prompt' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='customerdata' table='[public].[customerdata]' type='table' />
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='customerdata' table='[public].[customerdata]' type='table' />
+          <relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='cym_sessions' table='[public].[cym_sessions]' type='table' />
+          <relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='rechargeorders' table='[public].[rechargeorders]' type='table' />
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[address_id]' value='[rechargeorders].[address_id]' />
+          <map key='[app_id]' value='[customerdata].[app_id]' />
+          <map key='[customer_created_date]' value='[customerdata].[customer_created_date]' />
+          <map key='[customer_email]' value='[customerdata].[customer_email]' />
+          <map key='[customer_order_count]' value='[customerdata].[customer_order_count]' />
+          <map key='[date]' value='[cym_sessions].[date]' />
+          <map key='[discount_amount (rechargeorders)]' value='[rechargeorders].[discount_amount]' />
+          <map key='[discount_amount]' value='[customerdata].[discount_amount]' />
+          <map key='[discount_code]' value='[rechargeorders].[discount_code]' />
+          <map key='[discount_name]' value='[customerdata].[discount_name]' />
+          <map key='[email]' value='[rechargeorders].[email]' />
+          <map key='[id (cym_sessions)]' value='[cym_sessions].[id]' />
+          <map key='[id (rechargeorders)]' value='[rechargeorders].[id]' />
+          <map key='[id]' value='[customerdata].[id]' />
+          <map key='[nonsubscription_orders]' value='[cym_sessions].[nonsubscription_orders]' />
+          <map key='[order_date (rechargeorders)]' value='[rechargeorders].[order_date]' />
+          <map key='[order_date]' value='[customerdata].[order_date]' />
+          <map key='[order_id]' value='[rechargeorders].[order_id]' />
+          <map key='[order_name]' value='[customerdata].[order_name]' />
+          <map key='[order_status]' value='[customerdata].[order_status]' />
+          <map key='[order_total]' value='[customerdata].[order_total]' />
+          <map key='[order_type]' value='[rechargeorders].[order_type]' />
+          <map key='[shipping_price]' value='[rechargeorders].[shipping_price]' />
+          <map key='[shopify_order_id]' value='[rechargeorders].[shopify_order_id]' />
+          <map key='[subtotal]' value='[rechargeorders].[subtotal]' />
+          <map key='[total]' value='[rechargeorders].[total]' />
+          <map key='[total_sessions]' value='[cym_sessions].[total_sessions]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>app_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[app_id]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>app_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[order_date]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>order_date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_name]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>order_name</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_total</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[order_total]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>order_total</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_status</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_status]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>order_status</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[discount_name]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>discount_name</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_amount</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[discount_amount]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>discount_amount</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_email</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[customer_email]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>customer_email</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_created_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[customer_created_date]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>customer_created_date</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_order_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[customer_order_count]</local-name>
+            <parent-name>[customerdata]</parent-name>
+            <remote-alias>customer_order_count</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (cym_sessions)]</local-name>
+            <parent-name>[cym_sessions]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[cym_sessions]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>nonsubscription_orders</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[nonsubscription_orders]</local-name>
+            <parent-name>[cym_sessions]</parent-name>
+            <remote-alias>nonsubscription_orders</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_sessions</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[total_sessions]</local-name>
+            <parent-name>[cym_sessions]</parent-name>
+            <remote-alias>total_sessions</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (rechargeorders)]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[order_date (rechargeorders)]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>order_date</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_id</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[order_id]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>order_id</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>shopify_order_id</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[shopify_order_id]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>shopify_order_id</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>email</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[email]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>email</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>address_id</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[address_id]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>address_id</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subtotal</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[subtotal]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>subtotal</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>shipping_price</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[shipping_price]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>shipping_price</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[total]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>total</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[discount_code]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>discount_code</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>discount_amount</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[discount_amount (rechargeorders)]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>discount_amount</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>order_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[order_type]</local-name>
+            <parent-name>[rechargeorders]</parent-name>
+            <remote-alias>order_type</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>2147483647</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='real' name='[Calculation1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([Calculation_2295147007094734868]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column datatype='real' name='[Calculation2]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='RUNNING_SUM(SUM([Calculation_2295147007094734868]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column datatype='real' name='[Calculation3]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='WINDOW_AVG(SUM([Calculation_2295147007094734868]), -30, 0)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+      </column>
+      <column caption='DB Calc. Order Type' datatype='string' name='[Calculation_1233704870629253152]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+      </column>
+      <column caption='One-Time Customers' datatype='integer' name='[Calculation_1233704870639558691]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='if [Calculation_2295147007093248015] = 2 THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='Subscription Customer Total' datatype='integer' name='[Calculation_1233704870639865892]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='First Time Customer Total' datatype='integer' name='[Calculation_1233704870646845478]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_2295147007093391376] + [Calculation_2295147007093760018]' />
+      </column>
+      <column caption='Returning Customer Total' datatype='integer' name='[Calculation_1233704870647025703]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF ([Calculation_2295147007093248015] = 2) OR ([Calculation_2295147007092256779] = 1) AND [customer_order_count] &gt; 1 THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='Checkout Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007090454537]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2311472563554004992] != &quot;RECURRING&quot; THEN [order_total] + [Calculation_2295147007093530641] + [Calculation_2295147007095111702]  ELSE 0 END' />
+      </column>
+      <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+      </column>
+      <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+      </column>
+      <column caption='Draft Total' datatype='real' name='[Calculation_2295147007092494349]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007093075982] = 3 THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='DB Draft' datatype='integer' name='[Calculation_2295147007093075982]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [app_id] = 1354745 THEN 3 END' />
+      </column>
+      <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+      </column>
+      <column caption='First Time One-Time Customer Total' datatype='integer' name='[Calculation_2295147007093391376]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='First Time Subscription Customer Total' datatype='integer' name='[Calculation_2295147007093760018]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='First Time Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007094284307]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='New Customer Sales' datatype='real' name='[Calculation_2295147007094734868]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_2295147007093530641] + [Calculation_2295147007094284307]' />
+      </column>
+      <column caption='Returning One Time Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095111702]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND [customer_order_count] &gt; 1 THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='Returning Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095267351]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND [customer_order_count] &gt; 1 AND [Calculation_1233704870629253152] = &quot;CHECKOUT&quot; THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='Recurring' datatype='real' default-format='C1033%' name='[Calculation_2295147007095402520]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_1233704870629253152] = &quot;RECURRING&quot; THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='Conversion Rate' datatype='real' default-format='p0.00%' name='[Calculation_2295147007096336409]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[nonsubscription_orders] / [total_sessions]' />
+      </column>
+      <column caption='Calc. Order Type' datatype='string' name='[Calculation_2311472563554004992]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+      </column>
+      <column caption='Returning Checkout Total' datatype='real' name='[Calculation_2311472563554508801]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2311472563554004992] != &quot;RECURRING&quot; AND [customer_order_count] &gt; 1 THEN [order_total] + [Calculation_2295147007093530641] + [Calculation_2295147007095111702]  ELSE 0 END' />
+      </column>
+      <column caption='Returning Checkout Customer Total' datatype='integer' name='[Calculation_2311472563554816002]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2311472563554004992] != &quot;RECURRING&quot; AND [customer_order_count] &gt; 1 THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='Returning One Time Customer Total' datatype='real' name='[Calculation_2311472563555217411]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND [customer_order_count] &gt; 1 THEN [order_total] ELSE 0 END' />
+      </column>
+      <column caption='First Time Sales' datatype='real' default-format='C1033%' name='[Calculation_2407877737075269641]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_2295147007094284307] + [Calculation_2295147007093530641]' />
+      </column>
+      <column caption='Returning Sales' datatype='real' default-format='C1033%' name='[Calculation_2407877737075413002]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_2295147007095111702] + [Calculation_2295147007095267351]' />
+      </column>
+      <column caption='Checkout Customer Total' datatype='integer' name='[Calculation_2407877737076088843]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_1233704870629253152] != &quot;RECURRING&quot; THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='Recurring Customer Total' datatype='integer' name='[Calculation_2407877737076256780]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_1233704870629253152] = &quot;RECURRING&quot; THEN 1 ELSE 0 END' />
+      </column>
+      <column caption='First Time Sales (copy)' datatype='real' default-format='C1033%' name='[First Time Sales (copy)_81909267381186560]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_2295147007094284307] + [Calculation_2295147007093530641]' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='customerdata' datatype='table' name='[__tableau_internal_object_id__].[customerdata_47EB5193B1454F06A8844E6E3C33D619]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='cym_sessions' datatype='table' name='[__tableau_internal_object_id__].[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='rechargeorders' datatype='table' name='[__tableau_internal_object_id__].[rechargeorders_41141533751E449893E9C86C9DF0E344]' role='measure' type='quantitative' />
+      <column caption='Address Id' datatype='real' name='[address_id]' role='dimension' type='ordinal' />
+      <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+      <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+      <column caption='Customer Email' datatype='string' name='[customer_email]' role='dimension' type='nominal' />
+      <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+      <column caption='Date' datatype='datetime' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Discount Amount (Rechargeorders)' datatype='real' name='[discount_amount (rechargeorders)]' role='measure' type='quantitative' />
+      <column caption='Discount Amount' datatype='real' name='[discount_amount]' role='measure' type='quantitative' />
+      <column caption='Discount Code' datatype='string' name='[discount_code]' role='dimension' type='nominal' />
+      <column caption='Discount Name' datatype='string' name='[discount_name]' role='dimension' type='nominal' />
+      <column caption='Email' datatype='string' name='[email]' role='dimension' type='nominal' />
+      <column caption='Id (Cym Sessions)' datatype='integer' name='[id (cym_sessions)]' role='dimension' type='ordinal' />
+      <column caption='Id (Rechargeorders)' datatype='integer' name='[id (rechargeorders)]' role='dimension' type='ordinal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Nonsubscription Orders' datatype='real' name='[nonsubscription_orders]' role='measure' type='quantitative' />
+      <column caption='Order Date (Rechargeorders)' datatype='datetime' name='[order_date (rechargeorders)]' role='dimension' type='ordinal' />
+      <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+      <column caption='Order Id' datatype='real' name='[order_id]' role='dimension' type='ordinal' />
+      <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+      <column caption='Order Status' datatype='string' name='[order_status]' role='dimension' type='nominal' />
+      <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+      <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+      <column caption='Shipping Price' datatype='real' name='[shipping_price]' role='measure' type='quantitative' />
+      <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+      <column caption='Subtotal' datatype='real' name='[subtotal]' role='measure' type='quantitative' />
+      <column caption='Total' datatype='real' name='[total]' role='measure' type='quantitative' />
+      <column caption='Total Sessions' datatype='real' name='[total_sessions]' role='measure' type='quantitative' />
+      <column-instance column='[Calculation_2295147007096336409]' derivation='Avg' name='[avg:Calculation_2295147007096336409:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1233704870639558691]' derivation='Sum' name='[sum:Calculation_1233704870639558691:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1233704870639865892]' derivation='Sum' name='[sum:Calculation_1233704870639865892:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1233704870646845478]' derivation='Sum' name='[sum:Calculation_1233704870646845478:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1233704870647025703]' derivation='Sum' name='[sum:Calculation_1233704870647025703:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007090454537]' derivation='Sum' name='[sum:Calculation_2295147007090454537:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007093391376]' derivation='Sum' name='[sum:Calculation_2295147007093391376:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007093530641]' derivation='Sum' name='[sum:Calculation_2295147007093530641:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007093760018]' derivation='Sum' name='[sum:Calculation_2295147007093760018:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007094284307]' derivation='Sum' name='[sum:Calculation_2295147007094284307:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[sum:Calculation_2295147007094734868:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007095111702]' derivation='Sum' name='[sum:Calculation_2295147007095111702:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007095402520]' derivation='Sum' name='[sum:Calculation_2295147007095402520:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007096336409]' derivation='Sum' name='[sum:Calculation_2295147007096336409:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2311472563554508801]' derivation='Sum' name='[sum:Calculation_2311472563554508801:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2407877737075269641]' derivation='Sum' name='[sum:Calculation_2407877737075269641:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2407877737075413002]' derivation='Sum' name='[sum:Calculation_2407877737075413002:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2407877737076088843]' derivation='Sum' name='[sum:Calculation_2407877737076088843:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2407877737076256780]' derivation='Sum' name='[sum:Calculation_2407877737076256780:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_sessions]' derivation='Sum' name='[sum:total_sessions:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[order_date]' derivation='Month-Trunc' name='[tmn:order_date:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:10]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-4' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:11]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-4' ordering-field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]' ordering-type='Field' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:1]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-2' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:2]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-30' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:3]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-2' ordering-field='' ordering-type='Field' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:7]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-1' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:8]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-1' ordering-field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[tmn:order_date:qk]' ordering-type='Field' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='customerdata_47EB5193B1454F06A8844E6E3C33D619' _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' units='records'>
+        <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Extracts/federated_0qavxju0gbif3m13mqxk81.hyper' schema='Extract' sslmode='' tablename='Extract' update-time='08/03/2023 03:10:58 PM' username=''>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='customerdata_47EB5193B1454F06A8844E6E3C33D619' table='[Extract].[customerdata_47EB5193B1454F06A8844E6E3C33D619]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+            <relation name='customerdata_47EB5193B1454F06A8844E6E3C33D619' table='[Extract].[customerdata_47EB5193B1454F06A8844E6E3C33D619]' type='table' />
+            <relation name='cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7' table='[Extract].[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]' type='table' />
+            <relation name='rechargeorders_41141533751E449893E9C86C9DF0E344' table='[Extract].[rechargeorders_41141533751E449893E9C86C9DF0E344]' type='table' />
+          </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+          <cols>
+            <map key='[address_id]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[address_id]' />
+            <map key='[app_id]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[app_id]' />
+            <map key='[customer_created_date]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[customer_created_date]' />
+            <map key='[customer_email]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[customer_email]' />
+            <map key='[customer_order_count]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[customer_order_count]' />
+            <map key='[date]' value='[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7].[date]' />
+            <map key='[discount_amount (rechargeorders)]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[discount_amount]' />
+            <map key='[discount_amount]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[discount_amount]' />
+            <map key='[discount_code]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[discount_code]' />
+            <map key='[discount_name]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[discount_name]' />
+            <map key='[email]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[email]' />
+            <map key='[id (cym_sessions)]' value='[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7].[id]' />
+            <map key='[id (rechargeorders)]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[id]' />
+            <map key='[id]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[id]' />
+            <map key='[nonsubscription_orders]' value='[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7].[nonsubscription_orders]' />
+            <map key='[order_date (rechargeorders)]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[order_date]' />
+            <map key='[order_date]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[order_date]' />
+            <map key='[order_id]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[order_id]' />
+            <map key='[order_name]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[order_name]' />
+            <map key='[order_status]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[order_status]' />
+            <map key='[order_total]' value='[customerdata_47EB5193B1454F06A8844E6E3C33D619].[order_total]' />
+            <map key='[order_type]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[order_type]' />
+            <map key='[shipping_price]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[shipping_price]' />
+            <map key='[shopify_order_id]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[shopify_order_id]' />
+            <map key='[subtotal]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[subtotal]' />
+            <map key='[total]' value='[rechargeorders_41141533751E449893E9C86C9DF0E344].[total]' />
+            <map key='[total_sessions]' value='[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7].[total_sessions]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>customerdata</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>206114</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>app_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[app_id]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>app_id</remote-alias>
+              <ordinal>1</ordinal>
+              <family>customerdata</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>14</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[order_date]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>order_date</remote-alias>
+              <ordinal>2</ordinal>
+              <family>customerdata</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>184549</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[order_name]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>order_name</remote-alias>
+              <ordinal>3</ordinal>
+              <family>customerdata</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>206114</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_total</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[order_total]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>order_total</remote-alias>
+              <ordinal>4</ordinal>
+              <family>customerdata</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>24910</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_status</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[order_status]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>order_status</remote-alias>
+              <ordinal>5</ordinal>
+              <family>customerdata</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>discount_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[discount_name]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>discount_name</remote-alias>
+              <ordinal>6</ordinal>
+              <family>customerdata</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>599</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>discount_amount</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[discount_amount]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>discount_amount</remote-alias>
+              <ordinal>7</ordinal>
+              <family>customerdata</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6013</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>customer_email</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[customer_email]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>customer_email</remote-alias>
+              <ordinal>8</ordinal>
+              <family>customerdata</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>141400</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>customer_created_date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[customer_created_date]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>customer_created_date</remote-alias>
+              <ordinal>9</ordinal>
+              <family>customerdata</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>152190</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>customer_order_count</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[customer_order_count]</local-name>
+              <parent-name>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</parent-name>
+              <remote-alias>customer_order_count</remote-alias>
+              <ordinal>10</ordinal>
+              <family>customerdata</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>348</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[customerdata_47EB5193B1454F06A8844E6E3C33D619]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id (cym_sessions)]</local-name>
+              <parent-name>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>11</ordinal>
+              <family>cym_sessions</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>214</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[date]</local-name>
+              <parent-name>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</parent-name>
+              <remote-alias>date</remote-alias>
+              <ordinal>12</ordinal>
+              <family>cym_sessions</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>214</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>nonsubscription_orders</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[nonsubscription_orders]</local-name>
+              <parent-name>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</parent-name>
+              <remote-alias>nonsubscription_orders</remote-alias>
+              <ordinal>13</ordinal>
+              <family>cym_sessions</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>179</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_sessions</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total_sessions]</local-name>
+              <parent-name>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</parent-name>
+              <remote-alias>total_sessions</remote-alias>
+              <ordinal>14</ordinal>
+              <family>cym_sessions</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>213</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id (rechargeorders)]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>15</ordinal>
+              <family>rechargeorders</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>155953</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[order_date (rechargeorders)]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>order_date</remote-alias>
+              <ordinal>16</ordinal>
+              <family>rechargeorders</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>139313</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_id</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[order_id]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>order_id</remote-alias>
+              <ordinal>17</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>155953</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>shopify_order_id</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[shopify_order_id]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>shopify_order_id</remote-alias>
+              <ordinal>18</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>155953</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>email</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[email]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>email</remote-alias>
+              <ordinal>19</ordinal>
+              <family>rechargeorders</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>88673</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>address_id</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[address_id]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>address_id</remote-alias>
+              <ordinal>20</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>122668</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subtotal</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[subtotal]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>subtotal</remote-alias>
+              <ordinal>21</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9070</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>shipping_price</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[shipping_price]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>shipping_price</remote-alias>
+              <ordinal>22</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>135</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>total</remote-alias>
+              <ordinal>23</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>19770</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>discount_code</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[discount_code]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>discount_code</remote-alias>
+              <ordinal>24</ordinal>
+              <family>rechargeorders</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>571</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>discount_amount</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[discount_amount (rechargeorders)]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>discount_amount</remote-alias>
+              <ordinal>25</ordinal>
+              <family>rechargeorders</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>7753</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>order_type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[order_type]</local-name>
+              <parent-name>[rechargeorders_41141533751E449893E9C86C9DF0E344]</parent-name>
+              <remote-alias>order_type</remote-alias>
+              <ordinal>26</ordinal>
+              <family>rechargeorders</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rechargeorders_41141533751E449893E9C86C9DF0E344]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[avg:Calculation_2295147007096336409:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_1233704870639558691:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007090454537:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093391376:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093530641:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007096336409:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737076088843:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:11]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:8]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:3]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:7]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_1233704870647025703:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095111702:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095402520:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737075413002:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737076256780:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2311472563554508801:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_1233704870646845478:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737075269641:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094734868:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:1]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:10]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:2]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_1233704870639865892:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093760018:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094284307:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094734868:qk]:1&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:total_sessions:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='customerdata' id='customerdata_47EB5193B1454F06A8844E6E3C33D619'>
+            <properties context=''>
+              <relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='customerdata' table='[public].[customerdata]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='customerdata_47EB5193B1454F06A8844E6E3C33D619' table='[Extract].[customerdata_47EB5193B1454F06A8844E6E3C33D619]' type='table' />
+            </properties>
+          </object>
+          <object caption='cym_sessions' id='cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7'>
+            <properties context=''>
+              <relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='cym_sessions' table='[public].[cym_sessions]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7' table='[Extract].[cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7]' type='table' />
+            </properties>
+          </object>
+          <object caption='rechargeorders' id='rechargeorders_41141533751E449893E9C86C9DF0E344'>
+            <properties context=''>
+              <relation connection='postgres.0s6jyyj1qleisn1bdnrsw1ozkwnq' name='rechargeorders' table='[public].[rechargeorders]' type='table' />
+            </properties>
+            <properties context='extract'>
+              <relation name='rechargeorders_41141533751E449893E9C86C9DF0E344' table='[Extract].[rechargeorders_41141533751E449893E9C86C9DF0E344]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression _.fcp.RelationshipCalculations.false...op='[DATE(order_date)&#10;]' _.fcp.RelationshipCalculations.true...op='DATE([order_date])&#10;' />
+              <expression _.fcp.RelationshipCalculations.false...op='[DATE(date)]' _.fcp.RelationshipCalculations.true...op='DATE([date])' />
+            </expression>
+            <first-end-point object-id='customerdata_47EB5193B1454F06A8844E6E3C33D619' />
+            <second-end-point object-id='cym_sessions_7B24C9B61EEE4F8EACBED9A9974F26F7' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[customer_email]' />
+              <expression op='[email]' />
+            </expression>
+            <first-end-point object-id='customerdata_47EB5193B1454F06A8844E6E3C33D619' />
+            <second-end-point object-id='rechargeorders_41141533751E449893E9C86C9DF0E344' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Checkout Customers vs One-Time Customers'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Checkout Customers vs Recurring Customers
+</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+            </column>
+            <column caption='DB Calc. Order Type' datatype='string' name='[Calculation_1233704870629253152]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='Checkout Customer Total' datatype='integer' name='[Calculation_2407877737076088843]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870629253152] != &quot;RECURRING&quot; THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='Recurring Customer Total' datatype='integer' name='[Calculation_2407877737076256780]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870629253152] = &quot;RECURRING&quot; THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+            <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+            <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2407877737076088843]' derivation='Sum' name='[sum:Calculation_2407877737076088843:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2407877737076256780]' derivation='Sum' name='[sum:Calculation_2407877737076256780:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Month-Trunc' name='[tmn:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737076088843:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737076256780:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]' scope='rows' value='Total Customers' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[tmn:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{8899DE9A-D6A0-4421-BC24-4BEA1AA2AD48}' />
+    </worksheet>
+    <worksheet name='First Time Customers vs Returning Customers'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>First Time Customers vs. Returning Customers</run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <repository-location id='Sheet6' path='/t/cymbiotikallc/workbooks/NewCustomerConversionRate' revision='' site='cymbiotikallc' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='First Time Customer Total' datatype='integer' name='[Calculation_1233704870646845478]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Calculation_2295147007093391376] + [Calculation_2295147007093760018]' />
+            </column>
+            <column caption='Returning Customer Total' datatype='integer' name='[Calculation_1233704870647025703]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF ([Calculation_2295147007093248015] = 2) OR ([Calculation_2295147007092256779] = 1) AND [customer_order_count] &gt; 1 THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Customer Total' datatype='integer' name='[Calculation_2295147007093391376]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Customer Total' datatype='integer' name='[Calculation_2295147007093760018]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_1233704870646845478]' derivation='Sum' name='[sum:Calculation_1233704870646845478:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1233704870647025703]' derivation='Sum' name='[sum:Calculation_1233704870647025703:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Month-Trunc' name='[tmn:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_1233704870646845478:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_1233704870647025703:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]' scope='rows' value='Total Customers' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[tmn:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{AC02D871-F760-44EF-9586-DEAC163FBC87}' />
+    </worksheet>
+    <worksheet name='First Time Sales vs Returning Sales'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>First Time Sales vs Returning
+ Sales
+</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+            </column>
+            <column caption='DB Calc. Order Type' datatype='string' name='[Calculation_1233704870629253152]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007094284307]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Returning One Time Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095111702]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND [customer_order_count] &gt; 1 THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Returning Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095267351]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND [customer_order_count] &gt; 1 AND [Calculation_1233704870629253152] = &quot;CHECKOUT&quot; THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='First Time Sales' datatype='real' default-format='C1033%' name='[Calculation_2407877737075269641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Calculation_2295147007094284307] + [Calculation_2295147007093530641]' />
+            </column>
+            <column caption='Returning Sales' datatype='real' default-format='C1033%' name='[Calculation_2407877737075413002]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Calculation_2295147007095111702] + [Calculation_2295147007095267351]' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+            <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+            <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+            <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2407877737075269641]' derivation='Sum' name='[sum:Calculation_2407877737075269641:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2407877737075413002]' derivation='Sum' name='[sum:Calculation_2407877737075413002:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Month-Trunc' name='[tmn:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737075269641:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2407877737075413002:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]' scope='rows' value='Total Sales' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[tmn:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{6FA2888F-6033-4B7E-9A41-3B2693818662}' />
+    </worksheet>
+    <worksheet name='One-Time First Time Customers vs Subscription First Time Customers'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Customer Total' datatype='integer' name='[Calculation_2295147007093391376]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Customer Total' datatype='integer' name='[Calculation_2295147007093760018]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2295147007093391376]' derivation='Sum' name='[sum:Calculation_2295147007093391376:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007093760018]' derivation='Sum' name='[sum:Calculation_2295147007093760018:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093391376:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093760018:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{DFE08FAD-1098-4A07-83BE-D7A195288319}' />
+    </worksheet>
+    <worksheet name='One-Time First Time Sales vs Subscription First Time Sales'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007094284307]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_2295147007093530641]' derivation='Sum' name='[sum:Calculation_2295147007093530641:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007094284307]' derivation='Sum' name='[sum:Calculation_2295147007094284307:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093530641:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094284307:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{81130F59-08CF-4BCA-9132-A946ACD2BC5C}' />
+    </worksheet>
+    <worksheet name='Returning One-Time Customers vs Returning Checkout Customers'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+            </column>
+            <column caption='Calc. Order Type' datatype='string' name='[Calculation_2311472563554004992]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='Returning Checkout Customer Total' datatype='integer' name='[Calculation_2311472563554816002]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2311472563554004992] != &quot;RECURRING&quot; AND [customer_order_count] &gt; 1 THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+            <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+            <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2311472563554816002]' derivation='Sum' name='[sum:Calculation_2311472563554816002:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2311472563554816002:qk]</rows>
+        <cols>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]</cols>
+      </table>
+      <simple-id uuid='{8D3A0BDA-F371-42C7-8D17-CC89AAD95200}' />
+    </worksheet>
+    <worksheet name='Returning One-Time Salves vs. Returning Checkout Sales'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Returning One Time Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095111702]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND [customer_order_count] &gt; 1 THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Calc. Order Type' datatype='string' name='[Calculation_2311472563554004992]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='Returning Checkout Total' datatype='real' name='[Calculation_2311472563554508801]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2311472563554004992] != &quot;RECURRING&quot; AND [customer_order_count] &gt; 1 THEN [order_total] + [Calculation_2295147007093530641] + [Calculation_2295147007095111702]  ELSE 0 END' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+            <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+            <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+            <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2295147007095111702]' derivation='Sum' name='[sum:Calculation_2295147007095111702:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2311472563554508801]' derivation='Sum' name='[sum:Calculation_2311472563554508801:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2311472563554508801:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095111702:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{D87A6833-CF3F-4366-A737-5F303066CB7E}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Conversion Rate Table</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+            </column>
+            <column caption='DB Calc. Order Type' datatype='string' name='[Calculation_1233704870629253152]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='Draft Total' datatype='real' name='[Calculation_2295147007092494349]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093075982] = 3 THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='DB Draft' datatype='integer' name='[Calculation_2295147007093075982]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 1354745 THEN 3 END' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Customer Total' datatype='integer' name='[Calculation_2295147007093391376]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Customer Total' datatype='integer' name='[Calculation_2295147007093760018]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN 1 ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007094284307]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Returning One Time Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095111702]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND [customer_order_count] &gt; 1 THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Returning Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095267351]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND [customer_order_count] &gt; 1 AND [Calculation_1233704870629253152] = &quot;CHECKOUT&quot; THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Recurring' datatype='real' default-format='C1033%' name='[Calculation_2295147007095402520]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870629253152] = &quot;RECURRING&quot; THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Conversion Rate' datatype='real' default-format='p0.00%' name='[Calculation_2295147007096336409]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[nonsubscription_orders] / [total_sessions]' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2295147007096336409]' derivation='Avg' name='[avg:Calculation_2295147007096336409:qk]' pivot='key' type='quantitative' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Nonsubscription Orders' datatype='real' name='[nonsubscription_orders]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+            <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+            <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+            <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2295147007092494349]' derivation='Sum' name='[sum:Calculation_2295147007092494349:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007093391376]' derivation='Sum' name='[sum:Calculation_2295147007093391376:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007093530641]' derivation='Sum' name='[sum:Calculation_2295147007093530641:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007093760018]' derivation='Sum' name='[sum:Calculation_2295147007093760018:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007094284307]' derivation='Sum' name='[sum:Calculation_2295147007094284307:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007095111702]' derivation='Sum' name='[sum:Calculation_2295147007095111702:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007095267351]' derivation='Sum' name='[sum:Calculation_2295147007095267351:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007095402520]' derivation='Sum' name='[sum:Calculation_2295147007095402520:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_sessions]' derivation='Sum' name='[sum:total_sessions:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Day-Trunc' name='[tdy:order_date:ok]' pivot='key' type='ordinal' />
+            <column caption='Total Sessions' datatype='real' name='[total_sessions]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094284307:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093760018:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093530641:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093391376:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095267351:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095111702:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095402520:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007092494349:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[avg:Calculation_2295147007096336409:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:total_sessions:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094284307:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093760018:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093530641:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007093391376:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095267351:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095111702:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095402520:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007092494349:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[avg:Calculation_2295147007096336409:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:total_sessions:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[tdy:order_date:ok]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:order_date:ok]' />
+              <groupfilter function='member' level='[tdy:order_date:ok]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[tdy:order_date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[tdy:order_date:ok]</rows>
+        <cols>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</cols>
+      </table>
+      <simple-id uuid='{DB0FACCD-5334-4B24-BFBD-0E9AC7F58BE9}' />
+    </worksheet>
+    <worksheet name='Sheet 4'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>New Customer Sales (Moving Average vs. Monthly Total)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Subscriptions' datatype='integer' name='[Calculation_2295147007092256779]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 5417883 OR [app_id] = 5417893 OR [app_id] = 5417887 OR [app_id] = 294517 THEN 1 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='First Time Subscription Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007094284307]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007092256779] = 1 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='New Customer Sales' datatype='real' name='[Calculation_2295147007094734868]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Calculation_2295147007093530641] + [Calculation_2295147007094284307]' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[sum:Calculation_2295147007094734868:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007094734868]' derivation='Sum' name='[win:sum:Calculation_2295147007094734868:qk:11]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Avg' from='-4' ordering-field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]' ordering-type='Field' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+            </column-instance>
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:11]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+            <format attr='title' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]' scope='cols' value='Week Over Week' />
+            <format attr='render-fold-reversed' value='false' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height-header' value='10' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:11]' value='C1033%' />
+            <format attr='text-format' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094734868:qk]' value='C1033%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094734868:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:11]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007094734868:qk] + [federated.0qavxju0gbif3m13mqxk81a2ppe9].[win:sum:Calculation_2295147007094734868:qk:11])</rows>
+        <cols>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]</cols>
+      </table>
+      <simple-id uuid='{83307837-3033-4A6D-AA2E-BC445EFE3E6D}' />
+    </worksheet>
+    <worksheet name='Sheet 5'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Checkout vs Recurring Total Sales</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='DB Shopify to ReCharge' datatype='string' name='[Calculation_1233704870628569118]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='REPLACE([order_name], &quot;CYM&quot;, &quot;&quot;)' />
+            </column>
+            <column caption='DB Calc. Order Type' datatype='string' name='[Calculation_1233704870629253152]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='Checkout Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007090454537]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2311472563554004992] != &quot;RECURRING&quot; THEN [order_total] + [Calculation_2295147007093530641] + [Calculation_2295147007095111702]  ELSE 0 END' />
+            </column>
+            <column caption='DB Customer Duration' datatype='integer' name='[Calculation_2295147007092412428]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [customer_created_date], [order_date])' />
+            </column>
+            <column caption='DB One-Time' datatype='integer' name='[Calculation_2295147007093248015]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [app_id] = 580111 OR [app_id] = 4870017 OR [app_id] = 2393546 THEN 2 END' />
+            </column>
+            <column caption='First Time One-Time Order Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007093530641]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND (([customer_order_count] = 1) OR ([Calculation_2295147007092412428] = 0)) THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Returning One Time Total' datatype='real' default-format='C1033%' name='[Calculation_2295147007095111702]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_2295147007093248015] = 2 AND [customer_order_count] &gt; 1 THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Recurring' datatype='real' default-format='C1033%' name='[Calculation_2295147007095402520]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870629253152] = &quot;RECURRING&quot; THEN [order_total] ELSE 0 END' />
+            </column>
+            <column caption='Calc. Order Type' datatype='string' name='[Calculation_2311472563554004992]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_1233704870628569118] = str([shopify_order_id]) THEN [order_type] END' />
+            </column>
+            <column caption='App Id' datatype='integer' datatype-customized='true' name='[app_id]' role='dimension' type='ordinal' />
+            <column caption='Customer Created Date' datatype='datetime' name='[customer_created_date]' role='dimension' type='ordinal' />
+            <column caption='Customer Order Count' datatype='integer' name='[customer_order_count]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column caption='Order Name' datatype='string' name='[order_name]' role='dimension' type='nominal' />
+            <column caption='Order Total' datatype='real' name='[order_total]' role='measure' type='quantitative' />
+            <column caption='Order Type' datatype='string' name='[order_type]' role='dimension' type='nominal' />
+            <column caption='Shopify Order Id' datatype='real' name='[shopify_order_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_2295147007090454537]' derivation='Sum' name='[sum:Calculation_2295147007090454537:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2295147007095402520]' derivation='Sum' name='[sum:Calculation_2295147007095402520:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Month-Trunc' name='[tmn:order_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007090454537:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:Calculation_2295147007095402520:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]' scope='rows' value='Total Sales' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[Multiple Values]</rows>
+        <cols>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[tmn:order_date:ok] / [federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{D66CEDE7-E068-4DB8-914D-A583BD9294BF}' />
+    </worksheet>
+    <worksheet name='Total Sessions vs Conversion rate'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Total Sessions vs Conversion Rate
+</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='customerdata+ (postgres)' name='federated.0qavxju0gbif3m13mqxk81a2ppe9' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0qavxju0gbif3m13mqxk81a2ppe9'>
+            <column caption='Conversion Rate' datatype='real' default-format='p0.00%' name='[Calculation_2295147007096336409]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[nonsubscription_orders] / [total_sessions]' />
+            </column>
+            <column-instance column='[Calculation_2295147007096336409]' derivation='Avg' name='[avg:Calculation_2295147007096336409:qk]' pivot='key' type='quantitative' />
+            <column caption='Nonsubscription Orders' datatype='real' name='[nonsubscription_orders]' role='measure' type='quantitative' />
+            <column caption='Order Date' datatype='datetime' name='[order_date]' role='dimension' type='ordinal' />
+            <column-instance column='[total_sessions]' derivation='Sum' name='[sum:total_sessions:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Sessions' datatype='real' name='[total_sessions]' role='measure' type='quantitative' />
+            <column-instance column='[order_date]' derivation='Week-Trunc' name='[twk:order_date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:total_sessions:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <format attr='render-fold-reversed' value='true' />
+            <format attr='title' class='0' field='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]' scope='cols' value='Week Over Week' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[avg:Calculation_2295147007096336409:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:total_sessions:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.0qavxju0gbif3m13mqxk81a2ppe9].[avg:Calculation_2295147007096336409:qk] + [federated.0qavxju0gbif3m13mqxk81a2ppe9].[sum:total_sessions:qk])</rows>
+        <cols>[federated.0qavxju0gbif3m13mqxk81a2ppe9].[twk:order_date:qk]</cols>
+      </table>
+      <simple-id uuid='{8FD493D2-E098-4903-83F7-F289134745FB}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Checkout vs One-Time DashBoard'>
+      <repository-location derived-from='https://us-west-2b.online.tableau.com/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2/CheckoutvsOne-TimeDashBoard?rev=' id='CheckoutvsOne-TimeDashBoard' path='/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2' revision='' site='cymbiotikallc' />
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98678' id='7' param='horz' type-v2='layout-flow' w='3231' x='96428' y='661'>
+            <zone fixed-size='367' h='98678' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='3231' x='96428' y='661'>
+              <zone h='5454' id='8' name='Sheet 5' pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='3231' x='96428' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='49339' id='9' name='Checkout Customers vs One-Time Customers' w='96087' x='341' y='50000'>
+            <layout-cache cell-count-w='12' minheight='392' non-cell-size-w='60' type-h='scalable' type-w='cell' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='49339' id='3' name='Sheet 5' w='96087' x='341' y='661'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='19' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98020' id='18' param='vert' type-v2='layout-flow' w='98698' x='651' y='990'>
+                <zone fixed-size='280' h='49010' id='3' is-fixed='true' name='Sheet 5' w='95488' x='651' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8168' id='8' name='Sheet 5' pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='3210' x='96139' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49010' id='9' is-fixed='true' name='Checkout Customers vs One-Time Customers' w='95488' x='651' y='50000'>
+                  <layout-cache cell-count-w='12' minheight='392' non-cell-size-w='60' type-h='scalable' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{A446462F-9B94-4089-921B-03CD4A0378C2}' />
+    </dashboard>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Conversion Rate Table'>
+      <repository-location derived-from='https://us-west-2b.online.tableau.com/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2/ConversionRateTable?rev=' id='ConversionRateTable' path='/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2' revision='' site='cymbiotikallc' />
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98678' id='3' name='Sheet 3' w='99318' x='341' y='661'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='20' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98020' id='19' param='vert' type-v2='layout-flow' w='98698' x='651' y='990'>
+                <zone fixed-size='280' h='98020' id='3' is-fixed='true' name='Sheet 3' w='98698' x='651' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{D8CAE697-2A64-4964-B778-D4BC85936CAC}' />
+    </dashboard>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='First-Time vs Returning'>
+      <repository-location derived-from='https://us-west-2b.online.tableau.com/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2/First-TimevsReturning?rev=' id='First-TimevsReturning' path='/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2' revision='' site='cymbiotikallc' />
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98678' id='7' param='horz' type-v2='layout-flow' w='99318' x='341' y='661'>
+            <zone h='98678' id='5' type-v2='layout-basic' w='97956' x='341' y='661'>
+              <zone h='49339' id='3' name='First Time Customers vs Returning Customers' w='97956' x='341' y='50000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49339' id='9' name='First Time Sales vs Returning Sales' w='97956' x='341' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='32' h='98678' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='1362' x='98297' y='661'>
+              <zone h='5454' id='8' name='First Time Customers vs Returning Customers' pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='1362' x='98297' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='19' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98020' id='18' param='vert' type-v2='layout-flow' w='98698' x='651' y='990'>
+                <zone fixed-size='280' h='49010' id='9' is-fixed='true' name='First Time Sales vs Returning Sales' w='96094' x='651' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49010' id='3' is-fixed='true' name='First Time Customers vs Returning Customers' w='96094' x='651' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8168' id='8' name='First Time Customers vs Returning Customers' pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='2604' x='96745' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{E587230B-5DC9-4CEF-8FB1-6F88CAE4D7C6}' />
+    </dashboard>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='New/Recurring'>
+      <repository-location id='NewRecurring' path='/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2' revision='' site='cymbiotikallc' />
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98678' id='29' param='horz' type-v2='layout-flow' w='99318' x='341' y='661'>
+            <zone h='98678' id='27' type-v2='layout-basic' w='92507' x='341' y='661' />
+            <zone fixed-size='160' h='98678' id='28' is-fixed='true' param='vert' type-v2='layout-flow' w='6811' x='92848' y='661'>
+              <zone h='5454' id='30' name='Total Sessions vs Conversion rate' pane-specification-id='1' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='6811' x='92848' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='98000' id='17' param='horz' type-v2='layout-flow' w='98400' x='800' y='1000'>
+          <zone h='98000' id='15' type-v2='layout-basic' w='98400' x='800' y='1000'>
+            <zone h='49000' id='22' name='Sheet 4' w='98400' x='800' y='1000'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='49000' id='25' name='Total Sessions vs Conversion rate' w='98400' x='800' y='50000'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='40' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98020' id='39' param='vert' type-v2='layout-flow' w='98698' x='651' y='990'>
+                <zone fixed-size='280' h='49000' id='22' is-fixed='true' name='Sheet 4' w='98400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='25' is-fixed='true' name='Total Sessions vs Conversion rate' w='98400' x='800' y='50000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8168' id='30' name='Total Sessions vs Conversion rate' pane-specification-id='1' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='13019' x='86330' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{853934B3-9A8A-447A-A833-934E48841499}' />
+    </dashboard>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='One-Time First Time vs Subscription First Time'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98678' id='7' param='horz' type-v2='layout-flow' w='99318' x='341' y='661'>
+            <zone h='98678' id='5' type-v2='layout-basic' w='92507' x='341' y='661'>
+              <zone h='49338' id='3' name='One-Time First Time Sales vs Subscription First Time Sales' w='92507' x='341' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='49340' id='9' name='One-Time First Time Customers vs Subscription First Time Customers' w='92507' x='341' y='49999'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98678' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='6811' x='92848' y='661'>
+              <zone h='5454' id='8' name='One-Time First Time Sales vs Subscription First Time Sales' pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='6811' x='92848' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='1' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000' />
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{DF66C6EA-2095-4C8C-B747-8A05E2646003}' />
+    </dashboard>
+    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Session over Conversion Rate'>
+      <repository-location id='SessionoverConversionRate' path='/t/cymbiotikallc/workbooks/NewCustomerConversionRatev2' revision='' site='cymbiotikallc' />
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98678' id='7' param='horz' type-v2='layout-flow' w='99318' x='341' y='661'>
+            <zone h='98678' id='5' type-v2='layout-basic' w='92507' x='341' y='661'>
+              <zone h='98678' id='3' name='Total Sessions vs Conversion rate' w='92507' x='341' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='98678' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='6811' x='92848' y='661'>
+              <zone h='5454' id='8' name='Total Sessions vs Conversion rate' pane-specification-id='1' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='6811' x='92848' y='661'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='16' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98020' id='15' param='vert' type-v2='layout-flow' w='98698' x='651' y='990'>
+                <zone fixed-size='280' h='98020' id='3' is-fixed='true' name='Total Sessions vs Conversion rate' w='85679' x='651' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8168' id='8' name='Total Sessions vs Conversion rate' pane-specification-id='1' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type-v2='color' w='13019' x='86330' y='990'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{3D0A537B-C0CD-4D0A-8F59-A57F2105D480}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8A390C47-FD24-4DA7-BE00-A7F28D21852E}' />
+    </window>
+    <window class='worksheet' name='Sheet 4'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{27368031-BF5A-43A6-8927-59C7BC585375}' />
+    </window>
+    <window class='worksheet' name='Sheet 5'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9714E9C9-F5F3-4662-9A69-602668CD10E4}' />
+    </window>
+    <window class='worksheet' name='First Time Customers vs Returning Customers'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{CFC3B5FE-D9A1-4ED7-88AB-4D028D4C70AA}' />
+    </window>
+    <window class='worksheet' name='First Time Sales vs Returning Sales'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F58B9A5E-A4B1-4075-BCF0-94BF1915CCEA}' />
+    </window>
+    <window class='worksheet' name='Checkout Customers vs One-Time Customers'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{730AD4D1-C7BD-408E-BD9D-EA5D70D32E80}' />
+    </window>
+    <window class='worksheet' name='Total Sessions vs Conversion rate'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C92A1F0A-B7FB-4754-999D-68525A989962}' />
+    </window>
+    <window class='dashboard' name='New/Recurring'>
+      <viewpoints>
+        <viewpoint name='Sheet 4'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Sessions vs Conversion rate'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{A472514B-61EB-40BA-86E8-6CBF575A400E}' />
+    </window>
+    <window class='dashboard' name='Checkout vs One-Time DashBoard'>
+      <viewpoints>
+        <viewpoint name='Checkout Customers vs One-Time Customers'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 5'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
+      <simple-id uuid='{A05BB4F9-8BE2-42DA-9D07-377797B692EE}' />
+    </window>
+    <window class='dashboard' name='First-Time vs Returning'>
+      <viewpoints>
+        <viewpoint name='First Time Customers vs Returning Customers'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='First Time Sales vs Returning Sales'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{B8A46E1A-F168-4408-AE5C-A52162F2208B}' />
+    </window>
+    <window class='dashboard' name='Conversion Rate Table'>
+      <viewpoints>
+        <viewpoint name='Sheet 3'>
+          <zoom type='fit-width' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{FD8C0A9E-04CA-4C20-A6E6-8BF343EAFDE8}' />
+    </window>
+    <window class='dashboard' name='Session over Conversion Rate'>
+      <viewpoints>
+        <viewpoint name='Total Sessions vs Conversion rate'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{6B28F4C8-FF6D-4A72-9E30-44212CDFF728}' />
+    </window>
+    <window class='worksheet' name='One-Time First Time Sales vs Subscription First Time Sales'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5E1CFEC2-FFFE-40E4-B0D3-7E53C796B4B3}' />
+    </window>
+    <window class='worksheet' name='One-Time First Time Customers vs Subscription First Time Customers'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{589FF000-C5A0-439B-B827-830A7F1DFEAD}' />
+    </window>
+    <window class='dashboard' name='One-Time First Time vs Subscription First Time'>
+      <viewpoints>
+        <viewpoint name='One-Time First Time Customers vs Subscription First Time Customers'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='One-Time First Time Sales vs Subscription First Time Sales'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
+      <simple-id uuid='{DDB4A27B-43B1-4511-BB67-C48840E35971}' />
+    </window>
+    <window class='worksheet' name='Returning One-Time Salves vs. Returning Checkout Sales'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0qavxju0gbif3m13mqxk81a2ppe9].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{5859A11B-F30C-41D5-A11F-E9E57C384FC7}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Returning One-Time Customers vs Returning Checkout Customers'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{75E86C72-8F9C-474A-B236-DB6A60082E1C}' />
+    </window>
+  </windows>
+</workbook>

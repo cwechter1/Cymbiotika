@@ -1,0 +1,33 @@
+import requests
+import time
+from datetime import date, timedelta
+import csv
+import pandas as pd
+
+# Shopify store info
+store_url = 'https://mitolife.myshopify.com'
+access_token = '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'
+
+headers = {
+    "X-Shopify-Access-Token": "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",
+    "Content-Type": "application/json"
+}
+store_info = requests.get(store_url, headers=headers)
+
+start_date = date.today() - timedelta(days=5)
+current_date = start_date
+min_time = current_date.strftime('%Y-%m-%dT00:00:00-07:00')
+max_time = current_date.strftime('%Y-%m-%dT23:59:59-07:00')
+params = {
+    'status': 'any',
+    'created_at_min': min_time,
+    'created_at_max': max_time,
+    'limit': 250
+}
+page = 1
+total_orders = 0
+response = requests.get(f"{store_url}/admin/orders.json", headers=headers, params=params)
+orders_info = response.json()
+orders = orders_info.get('orders', [])
+if 'cancel_reason' in orders[0]:
+    print("yes")

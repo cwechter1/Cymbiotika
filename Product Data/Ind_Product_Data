@@ -1,0 +1,174 @@
+import csv
+import os
+import pandas as pd
+
+data = pd.read_csv(
+    "/Users/cymbiotika/Desktop/CymbiotikaCody/Product Data/sales_2022-08-01_2023-07-31.csv"
+)
+data = data.dropna(subset=["product_id", "total_sales"])
+# # Filter out all rows other than Online Store
+data = data[data["api_client_title"] == "Online Store"]
+# # Filter out rows that are Draft or Online Store
+# data = data[~data["api_client_title"].isin(["Draft Orders", "Online Store"])]
+
+data["day"] = pd.to_datetime(data["day"])
+# Create mapping dictionaries to combine similar product titles and IDs
+product_title_mapping = {
+    "Sleep (Ships every 30 Days)": "Sleep",
+    "Sleep 10.00% Off Auto renew": "Sleep",
+    "The Omega (Recurring, cancel anytime)": "The Omega",
+    "The Omega (Ships every 30 Days)": "The Omega",
+    "The Omega 10.00% Off Auto renew": "The Omega",
+    "The Omega - Vegan DHA/EPA & Astaxanthin Auto renew": "The Omega",
+    "Nexus (one-time)": "Nexus",
+    "Liposomal Vitamin B12 + B6 (Ships every 30 Days)": "Vitamin B12 + B6",
+    "Synergy Vitamin B12": "Vitamin B12 + B6",
+    "Liposomal Vitamin B12 + B6": "Vitamin B12 + B6",
+    "Vitamin B12 + B6 (Ships every 30 Days)": "Vitamin B12 + B6",
+    "Mineral Shilajit (Ships every 30 Days)": "Mineral Shilajit",
+    "Mineral Shilajit Resin": "Mineral Shilajit",
+    "Mineral Shilajit Resin Liquid Gold": "Mineral Shilajit",
+    "Mineral Shilajit Resin Liquid Gold (Ships every 30 Days)": "Mineral Shilajit",
+    "Mineral Shilajit Resin: Liquid Gold": "Mineral Shilajit",
+    "Golden Mind (Ships every 30 Days)": "Golden Mind",
+    "Coated Silver (Ships every 30 Days)": "Coated Silver",
+    "Liposomal Vitamin D3 + K2 + CoQ10": "Vitamin D3 + K2 + CoQ10",
+    "Vitamin D3 + K2 + CoQ10 (Ships every 30 Days)": "Vitamin D3 + K2 + CoQ10",
+    "Synergy D3 + K2": "Vitamin D3 + K2 + CoQ10",
+    "Vitamin D3 + K2": "Vitamin D3 + K2 + CoQ10",
+    "Vitamin D3 + K2 + CoQ10 (Ships every 30 Days)": "Vitamin D3 + K2 + CoQ10",
+    "Liposomal Vitamin D3 + K2 + CoQ10 (Ships every 30 Days)": "Vitamin D3 + K2 + CoQ10",
+    "Synergy Vitamin C": "Liposomal Vitamin C",
+    "Liposomal Vitamin C (Ships every 30 Days)": "Liposomal Vitamin C",
+    "Activated Charcoal (Ships every 30 Days)": "Activated Charcoal",
+    "Glutathione": "Liposomal Glutathione",
+    "Glutathione (Ships every 30 Days)": "Liposomal Glutathione",
+    "Liposomal Glutathione (Ships every 30 Days)": "Liposomal Glutathione",
+    "ReGenesis Glutathione": "Liposomal Glutathione",
+    "ReGenesis Liposomal Glutathione": "Liposomal Glutathione",
+    "Longevity Mushrooms (Ships every 30 Days)": "Longevity Mushrooms",
+    "Liposomal Magnesium L-Threonate": "Magnesium L-Threonate",
+    "Magnesium L-Threonate (Ships every 30 Days)": "Magnesium L-Threonate",
+    "Liposomal Elderberry (Ships every 30 Days)": "Liposomal Elderberry",
+    "Elderberry Defense": "Liposomal Elderberry",
+    "Liposomal Sulforaphane Matrix": "Super Greens",
+    "Super Greens (Ships every 30 Days)": "Super Greens",
+    "Adrenal Super Tonic (Ships every 30 Days)": "Adrenal Super Tonic",
+    "Heart Health (Ships every 30 Days)": "Heart Health",
+    "Red Yeast Rice": "Heart Health",
+    "NMN + Trans-Resveratrol (Ships every 30 Days)": "NMN + Trans-Resveratrol",
+    "Ultimate Pain Balm (Ships every 30 Days)": "Ultimate Pain Balm",
+    "Allergy Defense (Ships every 30 Days)": "Allergy Defense",
+    "ZINC Complex (Ships every 30 Days)": "ZINC Complex",
+    "Topical Magnesium Oil Spray (Ships every 30 Days)": "Topical Magnesium Oil Spray",
+    "Apple Cider Vinegar (Ships every 30 Days)": "Apple Cider Vinegar",
+    "Apple Cider Vinegar Pills (Ships every 30 Days)": "Apple Cider Vinegar",
+    "Apple Cider Vinegar Pills": "Apple Cider Vinegar",
+    "Probiotic (Ships every 30 Days)": "Probiotic",
+    "Plant Protein (Ships every 30 Days)": "Plant Protein",
+    "Molecular Hydrogen (Ships every 30 Days)": "Molecular Hydrogen",
+    "Pure Hydration (Ships every 30 Days)": "Pure Hydration",
+    "Pure Hydration: Electrolyte Packets": "Pure Hydration",
+    "Liposomal Sleep (Ships every 30 Days)": "Sleep",
+    "Liposomal Sleep": "Sleep",
+    "Creatine+ (Ships every 30 Days)": "Creatine+",
+    "Liposomal Creatine+": "Creatine+",
+    "Liposomal Creatine+ (Ships every 30 Days)": "Creatine+",
+    "Metabolic Health (Ships every 30 Days)": "Metabolic Health",
+    "Metabolic Health Supplement": "Metabolic Health",
+    "Inflammatory Health (Ships every 30 Days)": "Inflammatory Health",
+    "ParaX™ (Ships every 30 Days)": "ParaX™",
+    "PREORDER: ParaX™": "ParaX™",
+    "ParaX™ - Pre-Order": "ParaX™",
+    "ParaX™ - Pre-Order (Ships every 30 Days)": "ParaX™",
+    "Organic Matcha (Ships every 30 Days)": "Organic Matcha",
+    "Organic Matcha Powder": "Organic Matcha",
+    "Organic Matcha Powder (Ships every 30 Days)": "Organic Matcha",
+    "Preorder: Organic Matcha": "Organic Matcha",
+    "Preorder: Organic Matcha (Ships every 30 Days)": "Organic Matcha"
+    # Add more mappings as needed for other similar product titles
+}
+
+product_id_mapping = {
+    7162892255279: 7160155373615,
+    1333327429655: 652137758743,
+    4170236100631: 652137758743,
+    6741857206319: 652137758743,
+    6543578759215: 652137758743,
+    # Add more mappings as needed for other similar product IDs
+}
+
+# Map the product titles and IDs based on the dictionaries
+data["product_title"] = (
+    data["product_title"].map(product_title_mapping).fillna(data["product_title"])
+)
+data["product_id"] = (
+    data["product_id"].map(product_id_mapping).fillna(data["product_id"])
+)
+data["product_title"] = data["product_title"].fillna("")
+data = data[~data["product_title"].str.contains("- Sample")]
+
+results = pd.DataFrame(
+    columns=[
+        "product_id",
+        "product_title",
+        "total_customers",
+        "customers_3_times",
+        "customers_4_times",
+        "customers_5_times",
+        "customers_6_times",
+        "repurchase_rate",
+        "avg_duration",
+    ]
+)
+
+# Iterate through each product title and ID group
+for (product_id, product_title), product_data in data.groupby(
+    ["product_id", "product_title"]
+):
+    # Calculate the total number of customers who bought the product
+    total_customers = product_data["customer_email"].nunique()
+
+    # Calculate the number of customers who bought the product exactly 3, 4, 5, or 6 times
+    customers_3_times = product_data["customer_email"].value_counts().eq(3).sum()
+    customers_4_times = product_data["customer_email"].value_counts().eq(4).sum()
+    customers_5_times = product_data["customer_email"].value_counts().eq(5).sum()
+    customers_6_times = product_data["customer_email"].value_counts().eq(6).sum()
+
+    # Calculate the total number of customers who bought the product 3, 4, 5, or 6 times
+    total_customers_3_to_6_times = (
+        customers_3_times + customers_4_times + customers_5_times + customers_6_times
+    )
+
+    # Calculate the repurchase rate as a percentage with two decimal places
+    repurchase_rate = (total_customers_3_to_6_times / total_customers) * 100
+
+    # Calculate the average duration between purchases
+    avg_durations = product_data.groupby("customer_email")["day"].diff()
+    avg_duration = avg_durations.mean().days if len(avg_durations) > 0 else 0
+
+    # Append the results to the DataFrame
+    results = pd.concat(
+        [
+            results,
+            pd.DataFrame(
+                {
+                    "product_id": [f"{product_id:.0f}"],
+                    "product_title": [product_title],
+                    "total_customers": [total_customers],
+                    "customers_3_times": [customers_3_times],
+                    "customers_4_times": [customers_4_times],
+                    "customers_5_times": [customers_5_times],
+                    "customers_6_times": [customers_6_times],
+                    "repurchase_rate": [f"{repurchase_rate:.2f}%"],
+                    "avg_duration": [avg_duration],
+                }
+            ),
+        ],
+        ignore_index=True,
+    )
+# Filter out rows with less than 100 total customers
+results_filtered = results[results["total_customers"] >= 100]
+results_filtered.to_csv("one_time_product_stats.csv", index=False)
+
+print(results_filtered.to_string())

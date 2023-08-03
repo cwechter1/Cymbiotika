@@ -1,0 +1,50 @@
+from datetime import datetime
+from datetime import timedelta
+from datetime import date
+from db.models import Base, CYM_Abandoned_Cart
+from db import engine
+from sqlalchemy.orm import sessionmaker
+import pandas as pd
+import numpy as np
+
+print("Start")
+
+df = pd.read_csv('nonsubscription_orders.csv')
+
+Base.metadata.create_all(engine)
+
+Session = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
+# Function to convert percentage string to decimal
+def convert_percentage_to_decimal(percentage):
+    return float(percentage.strip('%')) / 100
+
+with Session() as session:
+    for i, row in df.iterrows():
+        # Skip rows with column names
+        if row['Date'] == 'Date':
+            continue
+        
+        date = row['Date']
+        total_sessions = row['Total Sessions']
+        add_to_cart_count = row['Adds to Cart']
+        non_subscription_daily = row['Non-Subscription Orders']
+        abandoned_cart_rate = convert_percentage_to_decimal(row['Abandoned Cart Rate'])
+        
+        abandoned_cart = CYM_Abandoned_Cart(
+            date=date,
+            total_sessions=total_sessions,
+            adds_to_cart=add_to_cart_count,
+            nonsubscription_orders=non_subscription_daily,
+            abandoned_cart_rate=abandoned_cart_rate
+        )
+    #     session.add(abandoned_cart)
+    # session.commit()
+
+print("End")
+
+
